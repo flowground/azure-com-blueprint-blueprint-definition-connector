@@ -1,0 +1,288 @@
+{
+    "title": "BlueprintClient",
+    "description": "Azure Blueprints Client provides access to blueprint definitions, assignments, and artifacts, and related blueprint operations.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/blueprint-blueprintDefinition/2018-11-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Blueprints_List": {
+            "main": "./lib/actions/Blueprints_List.js",
+            "title": "List blueprint definitions.",
+            "description": "List blueprint definitions.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Blueprints_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Blueprints_Delete": {
+            "main": "./lib/actions/Blueprints_Delete.js",
+            "title": "Delete a blueprint definition.",
+            "description": "Delete a blueprint definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Blueprints_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Blueprints_Get": {
+            "main": "./lib/actions/Blueprints_Get.js",
+            "title": "Get a blueprint definition.",
+            "description": "Get a blueprint definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Blueprints_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Blueprints_CreateOrUpdate": {
+            "main": "./lib/actions/Blueprints_CreateOrUpdate.js",
+            "title": "Create or update a blueprint definition.",
+            "description": "Create or update a blueprint definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Blueprints_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Artifacts_List": {
+            "main": "./lib/actions/Artifacts_List.js",
+            "title": "List artifacts for a given blueprint definition.",
+            "description": "List artifacts for a given blueprint definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Artifacts_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Artifacts_Delete": {
+            "main": "./lib/actions/Artifacts_Delete.js",
+            "title": "Delete a blueprint artifact.",
+            "description": "Delete a blueprint artifact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Artifacts_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Artifacts_Get": {
+            "main": "./lib/actions/Artifacts_Get.js",
+            "title": "Get a blueprint artifact.",
+            "description": "Get a blueprint artifact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Artifacts_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Artifacts_CreateOrUpdate": {
+            "main": "./lib/actions/Artifacts_CreateOrUpdate.js",
+            "title": "Create or update blueprint artifact.",
+            "description": "Create or update blueprint artifact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Artifacts_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PublishedBlueprints_List": {
+            "main": "./lib/actions/PublishedBlueprints_List.js",
+            "title": "List published versions of given blueprint definition.",
+            "description": "List published versions of given blueprint definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublishedBlueprints_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PublishedBlueprints_Delete": {
+            "main": "./lib/actions/PublishedBlueprints_Delete.js",
+            "title": "Delete a published version of a blueprint definition.",
+            "description": "Delete a published version of a blueprint definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublishedBlueprints_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PublishedBlueprints_Get": {
+            "main": "./lib/actions/PublishedBlueprints_Get.js",
+            "title": "Get a published version of a blueprint definition.",
+            "description": "Get a published version of a blueprint definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublishedBlueprints_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PublishedBlueprints_Create": {
+            "main": "./lib/actions/PublishedBlueprints_Create.js",
+            "title": "Publish a new version of the blueprint definition with the latest artifacts. Published blueprint definitions are immutable.",
+            "description": "Publish a new version of the blueprint definition with the latest artifacts. Published blueprint definitions are immutable.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublishedBlueprints_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PublishedArtifacts_List": {
+            "main": "./lib/actions/PublishedArtifacts_List.js",
+            "title": "List artifacts for a version of a published blueprint definition.",
+            "description": "List artifacts for a version of a published blueprint definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublishedArtifacts_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "PublishedArtifacts_Get": {
+            "main": "./lib/actions/PublishedArtifacts_Get.js",
+            "title": "Get an artifact for a published blueprint definition.",
+            "description": "Get an artifact for a published blueprint definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/PublishedArtifacts_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
